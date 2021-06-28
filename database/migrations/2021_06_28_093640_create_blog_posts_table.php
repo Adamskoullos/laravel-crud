@@ -18,7 +18,6 @@ class CreateBlogPostsTable extends Migration
             $table->timestamps();
             $table->timestamp('published_at')->nullable();
             $table->text('title');
-            $table->text('excerpt');
             $table->text('body');
         });
     }

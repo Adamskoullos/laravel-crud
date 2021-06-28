@@ -199,6 +199,64 @@ public function show(BlogPost $blogPost)
 
 # Create post workflow
 
+The user clicks on the `Create New Post` tab and the url path in the **href** matches the url path in `web.php` routes. This match triggers the `create()` method within `BlogPostController`. This simply returns the view `create.blade.php` which has the create new post form: 
+
+```php
+/**
+ * Show the form for creating a new resource.
+ *
+ * @return \Illuminate\Http\Response
+ */
+public function create()
+{
+    return view('create');
+}
+
+```
+The form is below, the `name` attributes for both the **input** and **texarea** are the hooks to grab the user input once the form is submitted:
+
+```php
+<x-header />
+<x-nav />
+<div class="create-form-container">
+    <h1>Create New Post Page</h1>
+    <form action="" method="POST">
+        @csrf
+        <input type="text" id="title" name="title" placeholder="Enter title here" required>
+        <textarea name="body" id="body" placeholder="Enter post content" required></textarea>
+        <button>Add post</button>
+    </form>
+</div>
+<x-footer />
+
+```
+With the same path but with a `POST` method, there is another match within `web.php` to the `store()` method which posts the user data to the database creating another post. Here is the `web.php` route:
+
+```php
+Route::post('/blog/create/post', [\App\Http\Controllers\BlogPostController::class, 'store']);
+
+```
+The above route invokes the `store()` method within the `BlogPostController`. The below method takes in the request data, creates a new post and save the returned value as $newPost, using the `$newpost->id` to redirect to the new post view:
+
+```php
+/**
+ * Store a newly created resource in storage.
+ *
+ * @param  \Illuminate\Http\Request  $request
+ * @return \Illuminate\Http\Response
+ */
+public function store(Request $request)
+{
+    $newPost = BlogPost::create([
+        'title' => $request->title,
+        'body' => $request->body,
+    ]);
+
+    return redirect('blog/' . $newPost->id);
+}
+```
+
+
 # Updating a post workflow
 
 # Deleting a post workflow

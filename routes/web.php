@@ -22,8 +22,7 @@ Route::get('/blog/{blogPost}', [\App\Http\Controllers\BlogPostController::class,
 
 // Open the view that contains the create new post form
 Route::get('/blog/create/post', [\App\Http\Controllers\BlogPostController::class, 'create']);
-
-// Add form data to the db
+// Add form data to the db - Triggered as the form is submitted
 Route::post('/blog/create/post', [\App\Http\Controllers\BlogPostController::class, 'store']);
 
 // Grab specific post to edit
