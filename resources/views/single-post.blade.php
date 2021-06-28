@@ -5,7 +5,7 @@
     <p>{{ $post->body }}</p>
     <div>
         <a href="/blog">Back to blog</a>
-        <a href="//blog/{{ $post->id }}/edit">Edit post</a>
+        <a href="/blog/{{ $post->id }}/edit">Edit post</a>
         <form id="delete-frm" class="" action="" method="POST">
             @method('DELETE')
             @csrf

@@ -256,7 +256,119 @@ public function store(Request $request)
 }
 ```
 
+Lastly for the form values to be accepted we have to allow fields that are fillable within the `BlogPost` Model:
+
+```php
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class BlogPost extends Model
+{
+    use HasFactory;
+
+    protected $fillable = ['title', 'body', 'user_id'];
+}
+
+```
+
 
 # Updating a post workflow
 
+This workflow has two parts:
+
+1. Opening the view for the user to edit the form
+2. Submitting the updated data to the database and redirecting the user
+
+The user clicks the edit tab within the post and the path matches in the routes file:
+
+```php
+// Grab specific post to edit
+Route::get('/blog/{blogPost}/edit', [\App\Http\Controllers\BlogPostController::class, 'edit']);
+```
+The edit view is opened with the form showing the current user input that can be altered. Note how the `value` attribute is used to render the current user input to the ofrm inputs: 
+
+```php
+<x-header />
+<x-nav />
+<div class="create-form-container">
+    <h1>Edit Post</h1>
+    <form action="" method="POST">
+        @csrf
+        @method('PUT')
+        <input type="text" id="title" name="title" value="{{ $post->title }}" required>
+        <textarea name="body" id="body" placeholder="Enter post content" required>{{ $post->body }}</textarea>
+        <button>Add post</button>
+    </form>
+</div>
+<x-footer />
+```
+
+Once the user hits submit the form above has the `method` altered to be **PUT**. This matches the path and method to the `update()` method within the controller (below). This takes the user input ($request) and resets the values of the `$blogPost` Model. Then uses the id of the post to redirect the user:
+
+```php
+
+/**
+ * Update the specified resource in storage.
+ *
+ * @param  \Illuminate\Http\Request  $request
+ * @param  \App\Models\BlogPost  $blogPost
+ * @return \Illuminate\Http\Response
+ */
+public function update(Request $request, BlogPost $blogPost)
+{
+    $blogPost->update([
+        'title' => $request->title,
+        'body' => $request->body
+    ]);
+
+    return redirect('blog/' . $blogPost->id);
+}
+```
+
 # Deleting a post workflow
+
+The user is in the edit post view (below). This shows the delete button as part of a form which has the `@method('DELETE')` directive:
+
+```php
+<x-header />
+<x-nav />
+<div class="single-post">
+    <h1>{{ $post->title }}</h1>
+    <p>{{ $post->body }}</p>
+    <div>
+        <a href="/blog">Back to blog</a>
+        <a href="/blog/{{ $post->id }}/edit">Edit post</a>
+        <form id="delete-frm" class="" action="" method="POST">
+            @method('DELETE')
+            @csrf
+            <button class="btn btn-danger">Delete post</button>
+        </form>
+    </div>
+</div>
+<x-footer />
+```
+This matches the path and the method to a route in `web.php`:
+
+```php
+// Delete specific post
+Route::delete('/blog/{blogPost}', [\App\Http\Controllers\BlogPostController::class, 'destroy']);
+
+```
+The above route invokes the `destroy()` method within the controller which deletes the post and redirects the user to the blog page:
+
+```php
+/**
+ * Remove the specified resource from storage.
+ *
+ * @param  \App\Models\BlogPost  $blogPost
+ * @return \Illuminate\Http\Response
+ */
+public function destroy(BlogPost $blogPost)
+{
+    $blogPost->delete();
+
+    return redirect('/blog');
+}
+```
