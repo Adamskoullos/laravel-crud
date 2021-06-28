@@ -5,7 +5,7 @@
 - [Create table for the model](#Create-table-for-the-model)
 - [Migrate the table to the database](#Migrate-the-table-to-the-database)
 - [Create the Controller for the Model](#Create-the-Controller-for-the-Model)
-- [Add routes to web.php](#Add-routes-to-web.php)
+- [Add routes to web.php](#Add-routes)
 - [Create basic pages and components and test routing](#Create-basic-pages-and-components-and-test-routing)
 - [Read - Grabing all items workflow](#Read-Grabing-all-items-workflow)
 - [Read - grabing a single item workflow](#Read-grabing-a-single-item-workflow)
@@ -105,7 +105,7 @@ class BlogPostController extends Controller
 }
 ```
 
-# Add routes to web.php
+# Add routes
 
 Add the routes to the route file before building out each workflow:
 
@@ -147,6 +147,7 @@ Using the initial data inserted earlier via tinker create the pages and componen
 2. Blog Page
 3. Single Post page
 4. Create New Post Page 
+5. Edit Post Page
 
 **Note**: The single post page with the delete button is created by the following form and uses the Blade directives `@method('METHOD')`, `@csrf`. We will wire this up later:
 
