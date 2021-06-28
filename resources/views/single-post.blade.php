@@ -1,5 +1,4 @@
-<x-header />
-<x-nav />
+<x-layout>
 <div class="single-post">
     <h1>{{ $post->title }}</h1>
     <p>{{ $post->body }}</p>
@@ -13,4 +12,4 @@
         </form>
     </div>
 </div>
-<x-footer />
+</x-layout>

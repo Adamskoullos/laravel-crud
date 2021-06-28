@@ -1,5 +1,4 @@
-<x-header />
-<x-nav />
+<x-layout>
 <div class="create-form-container">
     <h1>Edit Post</h1>
     <form action="" method="POST">
@@ -10,4 +9,4 @@
         <button>Add post</button>
     </form>
 </div>
-<x-footer />
+</x-layout>

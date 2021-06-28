@@ -8,7 +8,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <style>
             body {
                 font-family: 'Nunito', sans-serif;
@@ -16,3 +16,15 @@
         </style>
     </head>
     <body class="">
+    <nav>
+        <ul>
+            <a href="/"><li>Home</li></a>
+            <a href="/blog"><li>Blog</li></a>
+            <a href="/blog/create/post"><li>Create New Post</li></a>
+        </ul>
+    </nav>
+
+            {{ $slot }}
+
+    </body>
+</html>

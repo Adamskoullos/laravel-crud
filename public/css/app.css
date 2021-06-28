@@ -1,0 +1,40 @@
+div.post-list {
+  width: 400px;
+  margin: 50px auto 50px auto;
+}
+div.post-list a {
+  text-align: center;
+  text-decoration: none;
+  font-size: 18px;
+  color: #353535;
+}
+
+body {
+  margin: 0;
+}
+
+nav {
+  width: 100vw;
+  background: #c9c9c9;
+  padding: 10px;
+}
+nav ul {
+  margin: 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  list-style-type: none;
+}
+nav a {
+  margin: auto 10px;
+  text-decoration: none;
+}
+nav a li {
+  text-decoration: none;
+  color: #353535;
+  font-weight: 600;
+}
+nav a li:hover {
+  color: #43643b;
+}
+
