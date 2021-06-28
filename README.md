@@ -1,5 +1,21 @@
 # MVC Blog Template
 
+## ToC:
+- [Make the Model](#Make-the-Model)
+- [Create table for the model](#Create-table-for-the-model)
+- [Migrate the table to the database](#Migrate-the-table-to-the-database)
+- [Create the Controller for the Model](#Create-the-Controller-for-the-Model)
+- [Add routes to web.php](#Add-routes-to-web.php)
+- [Create basic pages and components and test routing](#Create-basic-pages-and-components-and-test-routing)
+- [Read - Grabing all items workflow](#Read-Grabing-all-items-workflow)
+- [Read - grabing a single item workflow](#Read-grabing-a-single-item-workflow)
+- [Create post workflow](#Create-post-workflow)
+- [Updating a post workflow](#Updating-a-post-workflow)
+- [Deleting a post workflow](#Deleting-a-post-workflow)
+
+------------------------------------------------------------------------------
+
+
 # Make the Model
 Create the class that works with the db within the `Models` folder. This class works withthe db via collection methods:
 ```
@@ -175,7 +191,7 @@ The `blog` view is rendered with access to `$posts`:
 <x-footer />
 ```
 
-# Read - grabing a single item workflow
+# Read grabing a single item workflow
 
 Leading on from above, a user can click on the title of a post to view a single post within its own view. The url includes the post->id which does two things.
 
