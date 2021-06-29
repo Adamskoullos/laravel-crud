@@ -15,9 +15,10 @@
 
 ------------------------------------------------------------------------------
 
+There is a model for each db table and a controller for each model.
 
 # Make the Model
-Create the class that works with the db within the `Models` folder. This class works withthe db via collection methods:
+Create the class that works with the db within the `Models` folder. This class works with the db via collection methods:
 ```
 php artisan make:model BlogPost
 ```
@@ -258,7 +259,7 @@ With the same path but with a `POST` method, there is another match within `web.
 Route::post('/blog/create/post', [\App\Http\Controllers\BlogPostController::class, 'store']);
 
 ```
-The above route invokes the `store()` method within the `BlogPostController`. The below method takes in the request data, creates a new post and save the returned value as $newPost, using the `$newpost->id` to redirect to the new post view:
+The above route invokes the `store()` method within the `BlogPostController`. The below method takes in the request data, creates a new post and save the returned value as $newPost, using the `$newPost->id` to redirect to the new post view:
 
 ```php
 /**
@@ -309,7 +310,22 @@ The user clicks the edit tab within the post and the path matches in the routes 
 // Grab specific post to edit
 Route::get('/blog/{blogPost}/edit', [\App\Http\Controllers\BlogPostController::class, 'edit']);
 ```
-The edit view is opened with the form showing the current user input that can be altered. Note how the `value` attribute is used to render the current user input to the ofrm inputs: 
+The `edit()` method within the controller is invoked, passing the blog post to the edit view and rendering the view:
+
+```php
+/**
+ * Show the form for editing the specified resource.
+ *
+ * @param  \App\Models\BlogPost  $blogPost
+ * @return \Illuminate\Http\Response
+ */
+public function edit(BlogPost $blogPost)
+{
+    return view('components.edit', ['post' => $blogPost,]);
+}
+```
+
+The edit view is opened with the form showing the current user input that can be altered. Note how the `value` attribute is used to render the current user input to the form inputs: 
 
 ```php
 <x-header />
@@ -327,7 +343,7 @@ The edit view is opened with the form showing the current user input that can be
 <x-footer />
 ```
 
-Once the user hits submit the form above has the `method` altered to be **PUT**. This matches the path and method to the `update()` method within the controller (below). This takes the user input ($request) and resets the values of the `$blogPost` Model. Then uses the id of the post to redirect the user:
+The form above has the `method` altered to be **PUT**. This matches the path and method to the `update()` method within the controller (below). This takes the user input ($request) and resets the values of the `$blogPost` Model. Then uses the id of the post to redirect the user:
 
 ```php
 
