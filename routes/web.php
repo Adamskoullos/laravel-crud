@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |/
 */
-Route::get('/', function (){return view('home');});
+Route::get('/', function (){return view('components.home');});
 
 // Get all posts
 Route::get('/blog', [\App\Http\Controllers\BlogPostController::class, 'index']);

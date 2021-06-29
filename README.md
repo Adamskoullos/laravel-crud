@@ -136,13 +136,18 @@ Route::delete('/blog/{blogPost}', [\App\Http\Controllers\BlogPostController::cla
 
 Using the initial data inserted earlier via tinker create the pages and components to test both the routing and data. Use Blade templating for components and views:
 
+**Note**: Once the component architecture has been planned each component is created via the terminal using the following command:
+
+`php artisan make:component ComponentName`
+
+This creates the class for the controller within `App\View\Components` and also the component/View within `Resources\Views\Components`. The main `BlogPostController` routes to the component/view within `Resources\Views\Components` > **view('components.view-name')**:
+
 **Components**:
 1. Header
 2. Footer
 3. Nav
 
 **Pages**:
-
 1. Home Page
 2. Blog Page
 3. Single Post page
