@@ -1,0 +1,52 @@
+nav{
+    width: 100vw;
+    background: rgb(201, 201, 201);
+    box-shadow: 1px 2px 3px 0px rgba(0, 0, 0, 0.3);
+    margin-bottom: 10vh;
+    z-index: 10;
+
+    // Sticky 
+    position: sticky;
+    top: 0;
+    transition: top 500ms ease-in-out;
+    
+    ul{
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    li{
+        list-style: none;
+    }
+
+    a{
+        text-decoration: none;
+        color: rgb(53, 53, 53); 
+        font-weight: 600;
+        display: block;
+        padding: 10px;
+     }
+
+    a:hover{
+        color:rgb(67, 100, 59);
+    }
+
+    a.active{
+        background:rgb(173, 173, 173);
+    }
+}
+
+// On scroll up bring nav back to its default postion
+nav.scroll-up{
+    top: 0;
+}
+// On scroll down slide nav up and away
+nav.scroll-down{
+    top: -100%;
+}
+
+
+

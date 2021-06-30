@@ -15,20 +15,20 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function (){return view('components.home');});
 
 // Get all posts
-Route::get('/blog', [\App\Http\Controllers\BlogPostController::class, 'index']);
+Route::get('/blog', [\App\Http\Controllers\BlogPostController::class, 'index'])->name('blogPosts');
 
 // Grab and show specific blog post
-Route::get('/blog/{blogPost}', [\App\Http\Controllers\BlogPostController::class, 'show']);
+Route::get('/blog/{blogPost}', [\App\Http\Controllers\BlogPostController::class, 'show'])->name('post');
 
 
 // Open the view that contains the create new post form
-Route::get('/blog/create/post', [\App\Http\Controllers\BlogPostController::class, 'create']);
+Route::get('/blog/create/post', [\App\Http\Controllers\BlogPostController::class, 'create'])->name('create');
 // Add form data to the db - Triggered as the form is submitted
 Route::post('/blog/create/post', [\App\Http\Controllers\BlogPostController::class, 'store']);
 
 
 // Grab specific post to edit
-Route::get('/blog/{blogPost}/edit', [\App\Http\Controllers\BlogPostController::class, 'edit']); 
+Route::get('/blog/{blogPost}/edit', [\App\Http\Controllers\BlogPostController::class, 'edit'])->name('edit'); 
 // Add form data to db
 Route::put('/blog/{blogPost}/edit', [\App\Http\Controllers\BlogPostController::class, 'update']); 
 

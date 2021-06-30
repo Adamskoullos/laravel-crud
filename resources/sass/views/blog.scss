@@ -1,15 +1,23 @@
 div.post-list{
-    width: 400px;
-    margin: 50px auto 50px auto;
+    flex: 1;
+    margin: auto;
+    padding: 20px;
     // background: grey;
 
-    div{
+    div.post{
+        flex:1;
         background: rgb(201, 201, 201);
         border-radius: 4px;
         transition: all ease 0.5s;
         box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.4);
+        margin: 10px;
+        min-width: 300px;
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
-    div:hover{
+    div.post:hover{
         background: rgb(219, 219, 219);
         transform: scale(1.01);
         transition: all ease 0.5s;
