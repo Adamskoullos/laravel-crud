@@ -5044,6 +5044,16 @@ document.addEventListener('DOMContentLoaded', function () {
   window.addEventListener('scroll', function () {
     throttle(handleNavScroll, 250);
   }); // End of nav scroll management ---------------------------------------------------
+  // Nav responsive behaviour logic. The below manages the switch between burger menu and the default top nav
+
+  var burger = document.querySelector('.burger');
+  var menu = document.querySelector('nav ul');
+  burger.addEventListener('click', mobileMenu);
+
+  function mobileMenu() {
+    burger.classList.toggle('active');
+    menu.classList.toggle('active');
+  }
 });
 
 /***/ }),

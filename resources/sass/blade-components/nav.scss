@@ -1,17 +1,25 @@
 nav{
-    width: 100vw;
+    // width: 100vw;
     background: rgb(201, 201, 201);
     box-shadow: 1px 2px 3px 0px rgba(0, 0, 0, 0.3);
     margin-bottom: 10vh;
     z-index: 10;
 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
     // Sticky 
     position: sticky;
     top: 0;
-    transition: top 500ms ease-in-out;
+    transition: top 1000ms ease-in-out;
     
+    .logo{
+        margin-left: 10px;
+    }
+
     ul{
-        margin: 0;
+        margin: 0 10px 0 auto;
         padding: 0;
         display: flex;
         justify-content: flex-start;
@@ -47,6 +55,72 @@ nav.scroll-up{
 nav.scroll-down{
     top: -100%;
 }
+
+// Nav responsivenes ------------------------------------------------
+
+// Hamburger menu
+.burger{
+    display: none;
+
+    .bar {
+        display: block;
+        width: 25px;
+        height: 3px;
+        margin: 5px auto;
+        -webkit-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+        background-color: rgb(53, 53, 53);
+    }
+}
+
+// Media queries to switch beteen ul and hamburger menu
+@media only screen and (max-width: 550px){
+
+    nav #list{
+        position: fixed;
+        left: -100%;
+        top: 45px;
+        flex-direction: column;
+        background: rgb(201, 201, 201);
+        width: 100%;
+        // border-radius: 10px;
+        text-align: center;
+        transition: 0.5s;
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+    }
+
+    li{
+        border-bottom: solid 1px rgba(0, 0, 0, 0.1);
+        width: 100%;
+    }
+
+    li a.active{
+        background: rgb(201, 201, 201);
+    }
+
+    #list.active{
+        left: 0;
+    }
+
+    .burger{
+        display: block;
+        cursor: pointer;
+        margin-right: 20px;
+    }
+
+    .burger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .burger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .burger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+}
+
 
 
 
