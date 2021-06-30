@@ -1,6 +1,6 @@
 <x-layout>
     <div class="create-form-container">
-        <h1>Create New Post Page</h1>
+        <h1>Create a new post</h1>
         <form action="" method="POST">
             @csrf
             <input type="text" id="title" name="title" placeholder="Enter title here" required>

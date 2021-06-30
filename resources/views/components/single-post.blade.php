@@ -2,13 +2,13 @@
 <div class="single-post">
     <h1>{{ $post->title }}</h1>
     <p>{{ $post->body }}</p>
-    <div>
-        <a href="/blog">Back to blog</a>
-        <a href="/blog/{{ $post->id }}/edit">Edit post</a>
-        <form id="delete-frm" class="" action="" method="POST">
+    <div class="buttons">
+        <a href="/blog" class="button">Back to blog</a>
+        <a href="/blog/{{ $post->id }}/edit" class="button">Edit post</a>
+        <form id="delete-frm" class="button" action="" method="POST">
             @method('DELETE')
             @csrf
-            <button class="btn btn-danger">Delete post</button>
+            <button class="">Delete post</button>
         </form>
     </div>
 </div>
